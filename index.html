@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>l'oie / Cyber-Raid. — Raid Urbain : Le plaisir de pirater ensemble.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="cyber-city">
+  <!-- Scanlines & Grille de fond animée -->
+  <div class="cyber-scanlines" aria-hidden="true"></div>
+  <div class="cyber-grid" aria-hidden="true"></div>
+
+  <!-- ===== En-tête Cyber City ===== -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo cyber-logo" aria-hidden="true">🪿⚡</div>
+      <span class="title brand-name">l'oie / Cyber-Raid<span>.</span></span>
+      <span class="slogan">Raid Urbain : Le plaisir de pirater ensemble.</span>
+    </div>
+    <nav class="topnav">
+      <button class="ghost cyber-ghost" onclick="openSetup()">👥 Opérateurs / Nouveau Raid</button>
+      <button class="ghost cyber-ghost" onclick="openRules()">📖 Protocole de jeu</button>
+    </nav>
+  </header>
+
+  <!-- ===== Disposition principale 2 colonnes ===== -->
+  <main class="layout">
+    <!-- Colonne gauche : Plateau Cybéroie Raid Zone -->
+    <section class="left" aria-label="Plateau de jeu Cyber-Raid">
+      <div class="board-frame">
+        <div class="board-head">
+          <span class="kicker">⚡ CYBÉROIE RAID ZONE.</span>
+          <span id="boardInfo" class="muted"></span>
+        </div>
+        <div id="board" class="board"></div>
+        <div class="muted board-foot">🚩 Nœud 1 (Départ) — survolez un nœud pour décoder ses protocoles. Victoire au Nœud 63 exact.</div>
+      </div>
+      <div id="legend" class="legend" aria-label="Légende des nœuds réseau"></div>
+    </section>
+
+    <!-- Colonne droite : Panneau de contrôle Cyberpunk -->
+    <aside class="right" aria-label="Panneau de contrôle réseau">
+      <!-- Carte du tour actif -->
+      <div class="card cyber-card">
+        <div class="row between">
+          <span class="kicker"><i id="turnDot" class="dot"></i>OPÉRATEUR EN ACTION</span>
+          <span id="roundLabel" class="muted">Cycle 1</span>
+        </div>
+        <h2 id="turnTitle" class="title">—</h2>
+        <p id="turnSub" class="muted">—</p>
+
+        <!-- Zone des dés Cyberpunk avec points néon -->
+        <div class="dice-zone">
+          <div id="diceBox" class="dice" aria-label="Générateurs d'entropie quantique">
+            <div id="die1" class="die cyber-die"></div>
+            <div id="die2" class="die cyber-die"></div>
+          </div>
+          <div class="roll-total">
+            <div id="rollTotal" class="title cyber-neon-val">-</div>
+            <div class="muted">Entropie extraite</div>
+          </div>
+        </div>
+
+        <div id="banner" class="banner hidden">
+          <span id="bannerIcon">⚡</span>
+          <div><b id="bannerTitle"></b><div id="bannerText" class="muted"></div></div>
+        </div>
+
+        <button id="mainBtn" class="primary big cyber-btn" onclick="mainAction()">Lancer le décryptage</button>
+
+        <!-- Puces d'accès & cartes actions -->
+        <div class="hand-head row between">
+          <b class="kicker">💾 PUCES D'ACCÈS & SCRIPTS</b>
+          <span id="handCount" class="pill">0 / 3</span>
+        </div>
+        <div id="hand" class="hand"></div>
+      </div>
+
+      <!-- Surveillance du réseau / Équipes -->
+      <div class="card cyber-card">
+        <div class="row between">
+          <h3 class="title">Réseau des Opérateurs</h3>
+          <span id="teamCount" class="pill"></span>
+        </div>
+        <div id="teams" class="teams"></div>
+      </div>
+
+      <!-- Terminal de télémétrie / Logs -->
+      <div class="card cyber-card terminal-card">
+        <div class="row between terminal-header">
+          <h3 class="title">Terminal de télémétrie</h3>
+          <span class="terminal-status"><i class="pulse-dot"></i>ONLINE</span>
+        </div>
+        <div id="log" class="log cyber-log"></div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- ===== Pied de page néon cyan ===== -->
+  <footer class="foot cyber-foot">
+    Il faut tomber pile sur la case 63 pour gagner. Sinon, on recule du surplus ! · Sauvegarde automatique dans le navigateur.
+  </footer>
+
+  <!-- Fenêtre modale générique (configuration, cibles, parade, chance, victoire) -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true"></div>
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <!-- Modules JavaScript du jeu -->
+  <script src="js/actions.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
